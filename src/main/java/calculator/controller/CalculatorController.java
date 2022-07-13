@@ -15,7 +15,7 @@ public class CalculatorController {
     @RequestMapping("/")
     public String login(
             @SessionAttribute(name = SessionConst.LOGIN_USER, required = false)
-            MemberDTO memberDTO, Model model) {
+            MemberDTO memberDTO) {
 
         if (memberDTO == null) {
             return "login";
