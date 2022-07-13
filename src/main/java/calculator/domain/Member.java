@@ -1,8 +1,7 @@
 package calculator.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,9 +10,14 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Member {
 
-    @Id @GeneratedValue
+
+    @Id
+    @GeneratedValue
     @Column(name = "member_id")
     private Long id;
 

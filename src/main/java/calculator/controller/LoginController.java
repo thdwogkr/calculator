@@ -20,7 +20,7 @@ public class LoginController {
 
     private final MemberService memberService;
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String login() {
         return "login";
     }
@@ -35,8 +35,8 @@ public class LoginController {
             return "login";
         }
 
-        HttpSession session = request.getSession();
-        session.setAttribute(SessionConst.LOGIN_USER, memberDTO);
+//        HttpSession session = request.getSession();
+//        session.setAttribute(SessionConst.LOGIN_USER, memberDTO);
 
 
         /*//쿠키 생성

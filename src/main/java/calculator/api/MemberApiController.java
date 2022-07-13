@@ -22,7 +22,7 @@ public class MemberApiController {
 
     private final MemberService memberService;
 
-    @PostMapping("/api/v1/members")
+ /*   @PostMapping("/api/v1/members")
     public CreateMemberResponse saveMemberV1(@RequestBody @Valid MemberDTO request) {
         Member member = new Member();
         member.setEmail(request.getEmail());
@@ -30,7 +30,7 @@ public class MemberApiController {
         Long id = memberService.join(member);
 
         return new CreateMemberResponse(id);
-    }
+    }*/
 
     @GetMapping("/api/v1/members")
     public ShowMembers MemberV1() {

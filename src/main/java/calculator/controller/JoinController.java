@@ -5,10 +5,7 @@ import calculator.dto.MemberDTO;
 import calculator.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -18,7 +15,7 @@ public class JoinController {
 
     private final MemberService memberService;
 
-    @RequestMapping("/join")
+    @GetMapping("/join")
     public String login() {
         return "join";
     }
@@ -26,10 +23,12 @@ public class JoinController {
     @PostMapping("/join")
     public String LoginId(@ModelAttribute @Valid MemberDTO request) {
 
-        Member member = new Member();
-        member.setEmail(request.getEmail());
-        member.setPw(request.getPw());
-        Long id = memberService.join(member);
+        Member member = Member.builder()
+                .pw(request.getPw())
+                .email(request.getEmail())
+                .build();
+
+        memberService.join(member);
 
         return "login";
     }

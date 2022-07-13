@@ -46,6 +46,8 @@ public class MemberService {
 
     //회원 정보 업데이트, 미구현
 
+
+    // todo: D예외처리ㅜ가
     public boolean login(Member member) {
         Member findMember = memberRepository.findOne(member.getId());
 

@@ -22,6 +22,16 @@ public class CalculatorApiController {
 
     @PostMapping("/api/v1/calculators")
     public CreateCalculatorResponse saveCalculatorV1(@RequestBody @Valid CreateCalculatorRequest request) {
+
+        Calculator calculator = createCalculator(request);
+        calculatorService.saveCalculator(calculator);
+
+
+
+        return new CreateCalculatorResponse(calculator.getAnswer());
+    }
+
+    private Calculator createCalculator(CreateCalculatorRequest request) {
         Member member = new Member();
         member.setId(request.memberId);
         Calculator calculator = new Calculator();
@@ -29,12 +39,7 @@ public class CalculatorApiController {
         calculator.setSecondNumber(request.secondNumber);
         calculator.setSymbol(request.symbol);
         calculator.setMember(member);
-
-        calculatorService.saveCalculator(calculator);
-    //
-
-
-        return new CreateCalculatorResponse(calculator.getAnswer());
+        return calculator;
     }
 
     @Data
