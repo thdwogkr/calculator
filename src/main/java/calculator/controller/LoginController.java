@@ -20,9 +20,20 @@ public class LoginController {
     private final MemberService memberService;
 
     @GetMapping("/login")
-    public String login() {
-        return "login";
+    public String login(@SessionAttribute(name = SessionConst.LOGIN_USER, required = false)
+                            MemberDTO memberDTO) {
+
+        if (memberDTO == null) {
+            return "login";
+        }
+
+        return "already-login";
     }
+
+
+
+
+
 
     @PostMapping("/login")
     public String loginId(@ModelAttribute MemberDTO memberDTO,
