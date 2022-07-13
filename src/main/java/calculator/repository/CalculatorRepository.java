@@ -1,6 +1,7 @@
 package calculator.repository;
 
 import calculator.domain.Calculator;
+import calculator.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -39,8 +40,9 @@ public class CalculatorRepository {
         return em.find(Calculator.class, id);
     }
 
-    public List<Calculator> findAll() {
-        return em.createQuery("select c from Calculator c join fetch c.member",Calculator.class)
+    public List<Calculator> findAll(String email) {
+        return em.createQuery("select c from Calculator c join fetch c.member where c.member.email= :email",Calculator.class)
+                .setParameter("email",email)
                 .getResultList();
     }
 }

@@ -34,7 +34,10 @@ public class CalculatorApiController {
     @GetMapping("/api/v1/calculators")
     public List<ShowCalculatorResponse> showCalculatorV1(@RequestBody @Valid ShowCalculatorRequest request) {
 
-        List<Calculator> findCalculators = calculatorService.findCalculators();
+        Member findMember = memberService.findOneEmail(request.getEmail());
+
+
+        List<Calculator> findCalculators = calculatorService.findCalculators(findMember.getEmail());
         List<ShowCalculatorResponse> result = findCalculators.stream()
                 .map(c -> new ShowCalculatorResponse(c))
                 .collect(Collectors.toList());

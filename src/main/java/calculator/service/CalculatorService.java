@@ -24,8 +24,8 @@ public class CalculatorService {
         calculatorRepository.save(calculator);
     }
 
-    public List<Calculator> findCalculators() {
-        return calculatorRepository.findAll();}
+    public List<Calculator> findCalculators(String email) {
+        return calculatorRepository.findAll(email);}
 
     public Calculator findOne(Long calculatorId) {
         return calculatorRepository.findOne(calculatorId);
