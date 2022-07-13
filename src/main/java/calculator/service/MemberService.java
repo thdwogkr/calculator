@@ -66,9 +66,12 @@ public class MemberService {
     }
 
     public Member createMember(MemberDTO request) {
-        Member member = new Member();
-        member.setEmail(request.getEmail());
-        member.setPw(request.getPw());
+        Member member = Member.builder()
+                .email(request.getEmail())
+                .pw(request.getPw())
+                .build();
+
         return member;
     }
+
 }

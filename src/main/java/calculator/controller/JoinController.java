@@ -23,11 +23,7 @@ public class JoinController {
     @PostMapping("/join")
     public String LoginId(@ModelAttribute @Valid MemberDTO request) {
 
-        Member member = Member.builder()
-                .pw(request.getPw())
-                .email(request.getEmail())
-                .build();
-
+        Member member = memberService.createMember(request);
         memberService.join(member);
 
         return "login";
