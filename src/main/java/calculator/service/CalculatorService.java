@@ -30,5 +30,4 @@ public class CalculatorService {
     public Calculator findOne(Long calculatorId) {
         return calculatorRepository.findOne(calculatorId);
     }
-
 }

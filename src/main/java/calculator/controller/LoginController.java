@@ -4,7 +4,6 @@ import calculator.domain.Member;
 import calculator.dto.MemberDTO;
 import calculator.service.MemberService;
 import calculator.session.SessionConst;
-import calculator.session.SessionManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -35,8 +34,8 @@ public class LoginController {
             return "login";
         }
 
-//        HttpSession session = request.getSession();
-//        session.setAttribute(SessionConst.LOGIN_USER, memberDTO);
+        HttpSession session = request.getSession();
+        session.setAttribute(SessionConst.LOGIN_USER, memberDTO);
 
 
         /*//쿠키 생성
