@@ -1,6 +1,7 @@
 package calculator.service;
 
 import calculator.domain.Member;
+import calculator.dto.MemberDTO;
 import calculator.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -62,5 +63,12 @@ public class MemberService {
         }
 
         return true;
+    }
+
+    public Member createMember(MemberDTO request) {
+        Member member = new Member();
+        member.setEmail(request.getEmail());
+        member.setPw(request.getPw());
+        return member;
     }
 }

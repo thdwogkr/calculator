@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import javax.validation.constraints.NotEmpty;
-import java.io.IOException;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,15 +20,16 @@ public class MemberApiController {
 
     private final MemberService memberService;
 
- /*   @PostMapping("/api/v1/members")
+    @PostMapping("/api/v1/members")
     public CreateMemberResponse saveMemberV1(@RequestBody @Valid MemberDTO request) {
-        Member member = new Member();
-        member.setEmail(request.getEmail());
-        member.setPw(request.getPw());
+        Member member = memberService.createMember(request);
+
         Long id = memberService.join(member);
 
         return new CreateMemberResponse(id);
-    }*/
+    }
+
+
 
     @GetMapping("/api/v1/members")
     public ShowMembers MemberV1() {

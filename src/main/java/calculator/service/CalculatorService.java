@@ -2,6 +2,7 @@ package calculator.service;
 
 import calculator.domain.Calculator;
 import calculator.domain.Member;
+import calculator.dto.CreateCalculatorRequest;
 import calculator.repository.CalculatorFormula;
 import calculator.repository.CalculatorRepository;
 import calculator.repository.MemberRepository;
@@ -29,5 +30,16 @@ public class CalculatorService {
 
     public Calculator findOne(Long calculatorId) {
         return calculatorRepository.findOne(calculatorId);
+    }
+
+    public Calculator createCalculator(CreateCalculatorRequest request) {
+        Member member = new Member();
+        member.setId(request.getMemberId());
+        Calculator calculator = new Calculator();
+        calculator.setFirstNumber(request.getFirstNumber());
+        calculator.setSecondNumber(request.getSecondNumber());
+        calculator.setSymbol(request.getSymbol());
+        calculator.setMember(member);
+        return calculator;
     }
 }
