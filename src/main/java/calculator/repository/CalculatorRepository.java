@@ -40,7 +40,7 @@ public class CalculatorRepository {
     }
 
     public List<Calculator> findAll() {
-        return em.createQuery("select c from Calculator c",Calculator.class)
+        return em.createQuery("select c from Calculator c join fetch c.member",Calculator.class)
                 .getResultList();
     }
 }
