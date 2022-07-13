@@ -3,7 +3,6 @@ package calculator.service;
 import calculator.domain.Calculator;
 import calculator.domain.Member;
 import calculator.dto.CreateCalculatorRequest;
-import calculator.repository.CalculatorFormula;
 import calculator.repository.CalculatorRepository;
 import calculator.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
