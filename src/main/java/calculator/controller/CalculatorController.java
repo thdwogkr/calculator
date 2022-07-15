@@ -16,6 +16,7 @@ public class CalculatorController {
             @SessionAttribute(name = SessionConst.LOGIN_USER, required = false)
             MemberDTO memberDTO) {
 
+        System.out.println(memberDTO);
         if (memberDTO == null) {
             return "login";
         }
