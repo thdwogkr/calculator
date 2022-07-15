@@ -45,7 +45,6 @@ public class LoginController {
         HttpSession session = request.getSession();
         session.setAttribute(SessionConst.LOGIN_USER, memberDTO);
 
-
         /*//쿠키 생성
         Cookie idCookie = new Cookie("email", String.valueOf(request.getEmail()));
 

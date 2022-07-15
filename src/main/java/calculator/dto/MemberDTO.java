@@ -12,7 +12,7 @@ public class MemberDTO {
     @NotEmpty
     private String pw;
 
-    private boolean rememberId;
+    //private boolean rememberId;
 }
 
 
