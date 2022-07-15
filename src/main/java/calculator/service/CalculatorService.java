@@ -32,13 +32,15 @@ public class CalculatorService {
     }
 
     public Calculator createCalculator(CreateCalculatorRequest request) {
-        Member member = new Member();
-        member.setId(request.getMemberId());
+        Member findMember = memberRepository.findOneEmail(request.getEmail());
+
         Calculator calculator = new Calculator();
         calculator.setFirstNumber(request.getFirstNumber());
         calculator.setSecondNumber(request.getSecondNumber());
         calculator.setSymbol(request.getSymbol());
-        calculator.setMember(member);
+        calculator.setMember(findMember);
+        System.out.println(calculator.getSymbol());
+        System.out.println(calculator.getMember());
         return calculator;
     }
 }

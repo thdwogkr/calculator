@@ -37,6 +37,7 @@ public class MemberRepository {
         } catch(NoResultException e) {
             return null;
         }
+        System.out.println(result);
 
         return result;
     }

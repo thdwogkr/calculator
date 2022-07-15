@@ -7,7 +7,7 @@ import javax.validation.constraints.NotEmpty;
 @Data
 public class CreateCalculatorRequest {
 
-    private Long memberId;
+    private String email;
 
     private Long firstNumber;
 
