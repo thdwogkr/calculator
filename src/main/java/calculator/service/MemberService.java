@@ -50,15 +50,13 @@ public class MemberService {
 
     // todo: D예외처리ㅜ가
     public boolean login(Member member) {
-        Member findMember = memberRepository.findOne(member.getId());
+        Member findMember = memberRepository.findOneEmail(member.getEmail());
 
         if (findMember == null) {
-            System.out.println("널값");
             return false;
         }
 
         if (!findMember.getPw().equals(member.getPw())) {
-            System.out.println("비번틀림");
             return false;
         }
 

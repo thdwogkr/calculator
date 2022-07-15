@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import java.util.List;
 
 @Repository
@@ -28,9 +29,17 @@ public class MemberRepository {
     }
 
     public Member findOneEmail(String email) {
-        return em.createQuery("select m from Member m where m.email=:email",Member.class)
-                .setParameter("email",email)
-                .getSingleResult();}
+        Member result = new Member();
+        try {
+            result = em.createQuery("select m from Member m where m.email=:email", Member.class)
+                    .setParameter("email", email)
+                    .getSingleResult();
+        } catch(NoResultException e) {
+            return null;
+        }
+
+        return result;
+    }
 
     public List<Member> findByEmail(String email) {
         return em.createQuery("select m from Member m where m.email=:email", Member.class)

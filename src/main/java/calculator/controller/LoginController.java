@@ -37,8 +37,7 @@ public class LoginController {
     public String loginId(@ModelAttribute MemberDTO memberDTO,
                           HttpServletRequest request) {
 
-        Member findMember = memberService.findOneEmail(memberDTO.getEmail());
-
+        Member findMember = memberService.createMember(memberDTO);
         if (!memberService.login(findMember)) {
             return "login";
         }
